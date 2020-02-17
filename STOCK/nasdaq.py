@@ -85,10 +85,10 @@ for dic in nasdaqJson:
 y = json.dumps(nasdaqJson)
 nasdaqJson = y
 #print(nasdaqJson)
-if os.path.exists("../../STOCK/" + dayofmonth + month + year + "NASDAQ.json"):
+if os.path.exists("STOCK/LOG/" + dayofmonth + month + year + "NASDAQ.json"):
    pass
 else:
-   doc = open("../../STOCK/" + dayofmonth + month + year + "NASDAQ.json","a")
+   doc = open("STOCK/LOG/" + dayofmonth + month + year + "NASDAQ.json","a")
    doc.write(nasdaqJson)
    doc.close()
 
