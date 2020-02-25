@@ -64,6 +64,8 @@ for row in rowArray:
    high = row[2]
    low = row[3]
    close = row[4]
+   change = row[6]
+   #open = (int(close) - int(change))
    dictName = {
       "date": today,
       "market": "NASDAQ",
@@ -71,7 +73,9 @@ for row in rowArray:
       "company": company,
       "high": high,
       "low": low,
-      "close": close
+      "close": close,
+      #"open": int(close)-int(change),
+      "change": change
       #"change":high - low
    }
    nasdaqJson.append(dictName)
