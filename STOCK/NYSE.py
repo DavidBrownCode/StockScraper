@@ -20,8 +20,8 @@ The other problem is that, given the look of the website, I don't trust that the
 The Stock symbols will have to be verified.---I changed the website to another website similarly constructed.  The current website returns 
 stock information which can be used for quick verification.  I also now have the ability to change betweem markets.  So now I can gather information from the New York Stock Exchange or even foreign markets."""
 
-URLPart1 = "http://www.eoddata.com/stocklist/NASDAQ/"
-#MarketArray = ["NASDAQ","NYSE","INDEX"]
+URLPart1 = "http://www.eoddata.com/stocklist/NYSE/"
+#MarketArray = ["NYSE","NYSE","INDEX"]
 #URLPart2 = "/"
 URLPart2 = ".htm"
 alphabeticalArray = ('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z')
@@ -29,7 +29,7 @@ URLArray = []
 tArray =[]
 rowArray = []
 
-nasdaqJson = []
+NYSEJson = []
 def getTable(alphabeticalArray):
    #for market in MarketArray:
    for alpha in alphabeticalArray:
@@ -72,7 +72,7 @@ for row in rowArray:
    #open = (int(close) - int(change))
    dictName = {
       "date": today,
-      "market": "NASDAQ",
+      "market": "NYSE",
       "symbol": symbol,
       "company": company,
       "high": high,
@@ -82,23 +82,23 @@ for row in rowArray:
       "change": change
       #"change":high - low
    }
-   nasdaqJson.append(dictName)
-print(len(nasdaqJson))
-"""print(nasdaqJson[763:767])
-for dic in nasdaqJson:
+   NYSEJson.append(dictName)
+print(len(NYSEJson))
+"""print(NYSEJson[763:767])
+for dic in NYSEJson:
    doc = open("../../Python/Stock.txt", "a")
    doc.write(str(dic))
    doc.close()"""
 
-y = json.dumps(nasdaqJson)
-nasdaqJson = y
-#print(nasdaqJson)
-savePath = "STOCK/LOG/" + dayofmonth + month + year + "NASDAQ.json"
+y = json.dumps(NYSEJson)
+NYSEJson = y
+#print(NYSEJson)
+savePath = "STOCK/LOG/" + dayofmonth + month + year + "NYSE.json"
 if os.path.exists(savePath):
    pass
 else:
    doc = open(savePath,"a")
-   doc.write(nasdaqJson)
+   doc.write(NYSEJson)
    doc.close()
 
 symbolList = []
@@ -107,8 +107,8 @@ for x in rowArray:
    symbolList.append(x[0])
 
 symbolTuple = tuple(symbolList)
-sym = open("STOCK/nasdaqModule.py", "w")
-sym.write("nasdaqTickers = [")
+sym = open("STOCK/NYSEModule.py", "w")
+sym.write("NYSETickers = [")
 for x in symbolList[0:(len(symbolList)-1)]:
    sym.write('"' + x + '"' + ",")
 sym.write('"' + symbolList[-1] + '"')
@@ -116,24 +116,3 @@ sym.write("]")
 sym.close()
 
 yahooFinanceArray = []
-
-"""def getClosing(d):
-   for x in symbolList:
-      yahooFinance = "https://finance.yahoo.com/quote/" + x + "?p=" + x
-      #find("span", class_  = "Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)")
-      page = requests.get(yahooFinance)    
-      soup = BeautifulSoup(page.content, 'html.parser')
-      closing = soup.findAll("span", class_  = "Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)")
-      closing = closing
-      return closing
-z
-print(getClosing(symbolList))"""
-
-"""for x in symbolList:
-   yahooFinance = "https://finance.yahoo.com/quote/" + x + "?p=" + x
-   #find("span", class_  = "Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)")
-   page = requests.get(yahooFinance)    
-   soup = BeautifulSoup(page.content, 'html.parser')
-   closing = soup.find("span", class_  = "Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)")
-   closing = closing.text
-   print(x, closing)"""
