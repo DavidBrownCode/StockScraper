@@ -1,0 +1,1 @@
+"""The short seller will look for optimum oppotunities to short sell."""

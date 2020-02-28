@@ -1,0 +1,1 @@
+"""The buyer will loook for optimum opportunities to buy."""
