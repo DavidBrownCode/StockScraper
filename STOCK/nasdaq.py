@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+
 import xlwt
 from xlwt import Workbook
 import requests
@@ -22,6 +23,7 @@ stock information which can be used for quick verification.  I also now have the
 
 URLPart1 = "http://www.eoddata.com/stocklist/NASDAQ/"
 #MarketArray = ["NASDAQ","NYSE","INDEX"]
+
 #URLPart2 = "/"
 URLPart2 = ".htm"
 alphabeticalArray = ('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z')

@@ -38,20 +38,22 @@ for x in nasdaqModule.nasdaqTickers:
 #RETURNS---
 #- ACAMW: 1d data not available for startTime=-2208988800 and endTime=1583274119. Only 100 years worth of day granularity data are allowed to be fetched per request.
 #---FOR EACH STOCK
-#Turns out that the yfinance is good for one request at a time.
-#print(finish - start)
 #savePath = "STOCK/LOG/history.csv"
 """doc = open(savePath,"a")
 doc.write(historyJson)
 doc.close()"""
 historyDict = history.to_dict()
 #history.to_csv(r'STOCK/LOG/history.csv')
+history.to_json(r'STOCK/LOG/history.json')
 #print(history.Columns)
-print(start)
+"""print(start)
 
 print(finish)
 
-print(finish - start)
-# this is how to grab an individual value -- print(historyDict.get("Open"[1]))
+print(finish - start)"""
+#this is how to grab an individual value -- 
+print(historyDict.get("Volume"))
 for x in historyDict:
     print(x)
+
+#print(historyDict[3])
